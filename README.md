@@ -1,55 +1,55 @@
-# API Documentation - Complaint Management System
+# Dokumentasi API - Sistem Manajemen Keluhan
 
 ## Overview
 
-This API manages orders, notifications, products, users, and complaints in the complaint management system.
+Dokumentasi API untuk mengelola order, notifikasi, produk, user, dan keluhan pada sistem manajemen keluhan.
 
-All endpoints accept and respond with **JSON**.
+Semua endpoint menerima dan merespon dengan format **JSON**.
 
-Ensure all body requests are sent with header:
+Pastikan semua body request dikirim dengan header:
 
 ```http
 Content-Type: application/json
 ```
 
-Errors will include detailed messages depending on the server-side failure.
+Detail error akan disediakan sesuai dengan jenis kesalahan server.
 
-Authentication protection (e.g., tokens) is recommended but not covered in this documentation.
+Untuk keamanan, pastikan semua endpoint yang memerlukan autentikasi dilindungi dengan token atau mekanisme autentikasi lain (detail implementasi autentikasi tidak tercakup dalam dokumentasi ini).
 
 ---
 
-## Summary of Routes
+## Ringkasan Routes
 
-| Resource | Method | Endpoint | Description |
+| Resource | Method | Endpoint | Deskripsi |
 |:---|:---|:---|:---|
-| Order | GET | `/orders/:id` | Get order by ID |
-| Order | POST | `/orders/` | Add a new order |
-| Notification | GET | `/notifications/:id` | Get notification by ID |
-| Notification | POST | `/notifications/` | Add a new notification |
-| Product | GET | `/products/:id` | Get product by ID |
-| Product | POST | `/products/` | Add a new product |
-| Product | PUT | `/products/:id` | Update product by ID |
-| Product | DELETE | `/products/:id` | Delete product by ID |
-| User | GET | `/users/:id` | Get user by ID |
-| User | POST | `/users/` | Add a new user |
-| User | PUT | `/users/:id` | Update user by ID |
-| User | DELETE | `/users/:id` | Delete user by ID |
-| Complaint | GET | `/complaints/:id` | Get complaint by ID |
-| Complaint | POST | `/complaints/` | Add a new complaint |
-| Complaint | PUT | `/complaints/:id` | Update complaint status |
-| Complaint | DELETE | `/complaints/:id` | Delete complaint by ID |
+| Order | GET | `/orders/:id` | Mengambil data order berdasarkan ID |
+| Order | POST | `/orders/` | Menambahkan order baru |
+| Notification | GET | `/notifications/:id` | Mengambil notifikasi berdasarkan ID |
+| Notification | POST | `/notifications/` | Menambahkan notifikasi baru |
+| Product | GET | `/products/:id` | Mengambil data produk berdasarkan ID |
+| Product | POST | `/products/` | Menambahkan produk baru |
+| Product | PUT | `/products/:id` | Memperbarui data produk berdasarkan ID |
+| Product | DELETE | `/products/:id` | Menghapus produk berdasarkan ID |
+| User | GET | `/users/:id` | Mengambil data user berdasarkan ID |
+| User | POST | `/users/` | Menambahkan user baru |
+| User | PUT | `/users/:id` | Memperbarui data user berdasarkan ID |
+| User | DELETE | `/users/:id` | Menghapus user berdasarkan ID |
+| Complaint | GET | `/complaints/:id` | Mengambil keluhan berdasarkan ID |
+| Complaint | POST | `/complaints/` | Menambahkan keluhan baru |
+| Complaint | PUT | `/complaints/:id` | Memperbarui status keluhan |
+| Complaint | DELETE | `/complaints/:id` | Menghapus keluhan berdasarkan ID |
 
 ---
 
-## API Details
+## Detail API
 
 ### 1. Order API
 
 #### GET `/orders/:id`
-- **Description:** Retrieve an order by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required): Order ID
-- **Responses:**
+- **Deskripsi:** Mengambil data order berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib): ID dari order
+- **Response:**
   - `200 OK`
     ```json
     {
@@ -70,13 +70,13 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
     ```
 
 #### POST `/orders/`
-- **Description:** Add a new order.
-- **Body Parameters:**
-  - `userId` (Integer, Required)
-  - `productId` (Integer, Required)
-  - `requestType` (String, Required)
-  - `status` (String, Required)
-- **Responses:**
+- **Deskripsi:** Menambahkan order baru.
+- **Body Parameter:**
+  - `userId` (Integer, Wajib)
+  - `productId` (Integer, Wajib)
+  - `requestType` (String, Wajib)
+  - `status` (String, Wajib)
+- **Response:**
   - `201 Created`
     ```json
     { "message": "Order added successfully", "orderId": 1 }
@@ -91,10 +91,10 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
 ### 2. Notification API
 
 #### GET `/notifications/:id`
-- **Description:** Retrieve a notification by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Mengambil notifikasi berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
     ```json
     {
@@ -109,13 +109,13 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
   - `500 Internal Server Error`
 
 #### POST `/notifications/`
-- **Description:** Add a new notification.
-- **Body Parameters:**
-  - `userId` (Integer, Required)
-  - `complaintId` (Integer, Required)
-  - `message` (String, Required)
-  - `status` (String, Required)
-- **Responses:**
+- **Deskripsi:** Menambahkan notifikasi baru.
+- **Body Parameter:**
+  - `userId` (Integer, Wajib)
+  - `complaintId` (Integer, Wajib)
+  - `message` (String, Wajib)
+  - `status` (String, Wajib)
+- **Response:**
   - `201 Created`
   - `500 Internal Server Error`
 
@@ -124,10 +124,10 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
 ### 3. Product API
 
 #### GET `/products/:id`
-- **Description:** Retrieve a product by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Mengambil data produk berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
     ```json
     {
@@ -143,31 +143,31 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
   - `500 Internal Server Error`
 
 #### POST `/products/`
-- **Description:** Add a new product.
-- **Body Parameters:**
-  - `name` (String, Required)
-  - `type` (String, Required)
-  - `location` (String, Required)
-  - `status` (String, Required)
-  - `description` (String, Required)
-- **Responses:**
+- **Deskripsi:** Menambahkan produk baru.
+- **Body Parameter:**
+  - `name` (String, Wajib)
+  - `type` (String, Wajib)
+  - `location` (String, Wajib)
+  - `status` (String, Wajib)
+  - `description` (String, Wajib)
+- **Response:**
   - `201 Created`
   - `500 Internal Server Error`
 
 #### PUT `/products/:id`
-- **Description:** Update a product by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Body Fields (Optional):** `name`, `type`, `location`, `status`, `description`
-- **Responses:**
+- **Deskripsi:** Memperbarui data produk berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Body Field (Opsional):** `name`, `type`, `location`, `status`, `description`
+- **Response:**
   - `200 OK`
   - `500 Internal Server Error`
 
 #### DELETE `/products/:id`
-- **Description:** Delete a product by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Menghapus produk berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
   - `500 Internal Server Error`
 
@@ -176,10 +176,10 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
 ### 4. User API
 
 #### GET `/users/:id`
-- **Description:** Retrieve a user by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Mengambil data user berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
     ```json
     {
@@ -192,29 +192,29 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
   - `500 Internal Server Error`
 
 #### POST `/users/`
-- **Description:** Add a new user.
-- **Body Parameters:**
-  - `name` (String, Required)
-  - `email` (String, Required)
-  - `password` (String, Required)
-- **Responses:**
+- **Deskripsi:** Menambahkan user baru.
+- **Body Parameter:**
+  - `name` (String, Wajib)
+  - `email` (String, Wajib)
+  - `password` (String, Wajib)
+- **Response:**
   - `201 Created`
   - `500 Internal Server Error`
 
 #### PUT `/users/:id`
-- **Description:** Update a user by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Body Fields (Optional):** `name`, `email`
-- **Responses:**
+- **Deskripsi:** Memperbarui data user berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Body Field (Opsional):** `name`, `email`
+- **Response:**
   - `200 OK`
   - `500 Internal Server Error`
 
 #### DELETE `/users/:id`
-- **Description:** Delete a user by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Menghapus user berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
   - `500 Internal Server Error`
 
@@ -223,10 +223,10 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
 ### 5. Complaint API
 
 #### GET `/complaints/:id`
-- **Description:** Retrieve a complaint by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Mengambil keluhan berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
     ```json
     {
@@ -241,88 +241,88 @@ Authentication protection (e.g., tokens) is recommended but not covered in this 
   - `500 Internal Server Error`
 
 #### POST `/complaints/`
-- **Description:** Add a new complaint.
-- **Body Parameters:**
-  - `userId` (Integer, Required)
-  - `productId` (Integer, Required)
-  - `complaintText` (String, Required)
-  - `status` (String, Required)
-- **Responses:**
+- **Deskripsi:** Menambahkan keluhan baru.
+- **Body Parameter:**
+  - `userId` (Integer, Wajib)
+  - `productId` (Integer, Wajib)
+  - `complaintText` (String, Wajib)
+  - `status` (String, Wajib)
+- **Response:**
   - `201 Created`
   - `500 Internal Server Error`
 
 #### PUT `/complaints/:id`
-- **Description:** Update complaint status.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
+- **Deskripsi:** Memperbarui status keluhan berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
 - **Body Parameter:**
-  - `status` (String, Required)
-- **Responses:**
+  - `status` (String, Wajib)
+- **Response:**
   - `200 OK`
   - `500 Internal Server Error`
 
 #### DELETE `/complaints/:id`
-- **Description:** Delete a complaint by ID.
-- **Parameters:**
-  - `id` (URL, Integer, Required)
-- **Responses:**
+- **Deskripsi:** Menghapus keluhan berdasarkan ID.
+- **Parameter:**
+  - `id` (URL, Integer, Wajib)
+- **Response:**
   - `200 OK`
   - `500 Internal Server Error`
 
 ---
 
-## Data Models
+## Model Data
 
 ### Complaint
-| Field | Type | Description |
+| Field | Tipe Data | Deskripsi |
 |:------|:-----|:------------|
-| complaint_id | Integer | Unique complaint ID |
-| user_id | Integer | User who filed the complaint |
-| product_id | Integer | Product related to the complaint |
-| complaint_text | String | Complaint details |
-| status | String | Status of the complaint |
+| complaint_id | Integer | ID unik untuk keluhan |
+| user_id | Integer | ID dari user penyampai keluhan |
+| product_id | Integer | ID dari produk yang dikeluhkan |
+| complaint_text | String | Deskripsi detail keluhan |
+| status | String | Status keluhan (pending, in progress, resolved) |
 
 ### Order
-| Field | Type | Description |
+| Field | Tipe Data | Deskripsi |
 |:------|:-----|:------------|
-| order_id | Integer | Unique order ID |
-| user_id | Integer | User who made the order |
-| product_id | Integer | Ordered product ID |
-| request_type | String | Type of request (purchase, rent) |
-| status | String | Order status |
+| order_id | Integer | ID unik untuk order |
+| user_id | Integer | ID user pembuat order |
+| product_id | Integer | ID produk yang diorder |
+| request_type | String | Tipe request (purchase, rent) |
+| status | String | Status order |
 
 ### Notification
-| Field | Type | Description |
+| Field | Tipe Data | Deskripsi |
 |:------|:-----|:------------|
-| notification_id | Integer | Unique notification ID |
-| user_id | Integer | Receiving user ID |
-| complaint_id | Integer | Related complaint ID |
-| message | String | Notification message |
-| status | String | Status of notification |
+| notification_id | Integer | ID unik untuk notifikasi |
+| user_id | Integer | ID user penerima notifikasi |
+| complaint_id | Integer | ID keluhan terkait (jika ada) |
+| message | String | Isi pesan notifikasi |
+| status | String | Status notifikasi (unread, read) |
 
 ### Product
-| Field | Type | Description |
+| Field | Tipe Data | Deskripsi |
 |:------|:-----|:------------|
-| product_id | Integer | Unique product ID |
-| name | String | Name of the product |
-| type | String | Product category/type |
-| location | String | Storage location |
-| status | String | Availability status |
-| description | String | Detailed description |
+| product_id | Integer | ID unik untuk produk |
+| name | String | Nama produk |
+| type | String | Tipe/kategori produk |
+| location | String | Lokasi penyimpanan |
+| status | String | Status produk |
+| description | String | Deskripsi detail produk |
 
 ### User
-| Field | Type | Description |
+| Field | Tipe Data | Deskripsi |
 |:------|:-----|:------------|
-| user_id | Integer | Unique user ID |
-| name | String | Full name |
-| email | String | Email address |
-| password | String | Encrypted password (not returned in API response) |
+| user_id | Integer | ID unik user |
+| name | String | Nama lengkap user |
+| email | String | Email user |
+| password | String | Password terenkripsi (tidak dikembalikan pada respons API) |
 
 ---
 
-## Notes
+## Catatan
 
-- All request and response payloads use **JSON** format.
-- Make sure to send `Content-Type: application/json` header.
-- Error responses include helpful messages.
-- Implement security (authentication tokens) for protected endpoints.
+- Semua request dan response menggunakan format **JSON**.
+- Header `Content-Type: application/json` wajib digunakan.
+- Respons error akan mengandung pesan error yang membantu.
+- Untuk keamanan, gunakan mekanisme autentikasi pada endpoint yang diperlukan.
